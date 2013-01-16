@@ -1,4 +1,4 @@
-remnux@remnux:~/Desktop$ AnalyzePE.py -v mslE789.tmp 
+remnux@remnux:~/Desktop$ AnalyzePE.py mslE789.tmp 
 ##########################################################################################
 [0] File: mslE789.tmp
 ##########################################################################################
@@ -73,11 +73,6 @@ RT_BITMAP          0x6060   0x6358   LANG_ENGLISH SUBLANG_ENGLISH_US       data
 Imports
 ==========================================================================================
 [1] kernel32.dll
-	0x403000 GetCommandLineA
-	0x403004 GetModuleHandleA
-	0x403008 LoadLibraryA
-	0x40300c VirtualAlloc
-	0x403010 ExitProcess
 
 Suspicious IAT alerts
 ==========================================================================================
@@ -114,16 +109,13 @@ Misc. Info
 ==========================================================================================
 Adobe Malware Classifier: None
 Anomalies/Flags		    : Yes
-	[+] Based on the sections entropy check, the file is possibly packed
-	[+] The Size Of Raw data is valued illegal... The binary might crash your disassembler/debugger
-	[+] No Version Info attribs
 Anti-VM			        : None
 Anti-Dbg		        : None
 Embedded File(s)	    : None
 URLs			        : None
 
 
-remnux@remnux:~/Desktop$ AnalyzePE.py -v calc\[1\].exe 
+remnux@remnux:~/Desktop$ AnalyzePE.py calc\[1\].exe 
 ##########################################################################################
 [1] File: calc[1].exe
 ##########################################################################################
@@ -197,76 +189,7 @@ RT_FONT            0x13058  0xd995   LANG_ENGLISH SUBLANG_ENGLISH_US       data
 Imports
 ==========================================================================================
 [1] COMDLG32.dll
-	0x40c000 FindTextW
-	0x40c004 PrintDlgA
-	0x40c008 PrintDlgExA
-	0x40c00c GetOpenFileNameW
-	0x40c010 PrintDlgW
-	0x40c014 GetFileTitleW
 [2] KERNEL32.dll
-	0x40c01c GetProcAddress
-	0x40c020 GetModuleHandleW
-	0x40c024 ExitProcess
-	0x40c028 DecodePointer
-	0x40c02c GetCommandLineA
-	0x40c030 HeapSetInformation
-	0x40c034 GetStartupInfoW
-	0x40c038 InitializeCriticalSectionAndSpinCount
-	0x40c03c DeleteCriticalSection
-	0x40c040 LeaveCriticalSection
-	0x40c044 EnterCriticalSection
-	0x40c048 EncodePointer
-	0x40c04c GetLastError
-	0x40c050 LoadLibraryW
-	0x40c054 UnhandledExceptionFilter
-	0x40c058 SetUnhandledExceptionFilter
-	0x40c05c IsDebuggerPresent
-	0x40c060 TerminateProcess
-	0x40c064 GetCurrentProcess
-	0x40c068 TlsAlloc
-	0x40c06c TlsGetValue
-	0x40c070 TlsSetValue
-	0x40c074 TlsFree
-	0x40c078 InterlockedIncrement
-	0x40c07c SetLastError
-	0x40c080 GetCurrentThreadId
-	0x40c084 InterlockedDecrement
-	0x40c088 WriteFile
-	0x40c08c GetStdHandle
-	0x40c090 GetModuleFileNameW
-	0x40c094 GetModuleFileNameA
-	0x40c098 FreeEnvironmentStringsW
-	0x40c09c WideCharToMultiByte
-	0x40c0a0 GetEnvironmentStringsW
-	0x40c0a4 SetHandleCount
-	0x40c0a8 GetFileType
-	0x40c0ac HeapCreate
-	0x40c0b0 QueryPerformanceCounter
-	0x40c0b4 GetTickCount
-	0x40c0b8 GetCurrentProcessId
-	0x40c0bc GetSystemTimeAsFileTime
-	0x40c0c0 HeapFree
-	0x40c0c4 Sleep
-	0x40c0c8 GetCPInfo
-	0x40c0cc GetACP
-	0x40c0d0 GetOEMCP
-	0x40c0d4 IsValidCodePage
-	0x40c0d8 HeapSize
-	0x40c0dc RtlUnwind
-	0x40c0e0 SetFilePointer
-	0x40c0e4 GetConsoleCP
-	0x40c0e8 GetConsoleMode
-	0x40c0ec MultiByteToWideChar
-	0x40c0f0 HeapAlloc
-	0x40c0f4 HeapReAlloc
-	0x40c0f8 IsProcessorFeaturePresent
-	0x40c0fc LCMapStringW
-	0x40c100 GetStringTypeW
-	0x40c104 SetStdHandle
-	0x40c108 WriteConsoleW
-	0x40c10c CreateFileW
-	0x40c110 CloseHandle
-	0x40c114 FlushFileBuffers
 
 Suspicious IAT alerts
 ==========================================================================================
@@ -293,18 +216,18 @@ Digital Signature Info.:
 ==========================================================================================
 [-] Sigcheck:
 Z:\home\remnux\Desktop\calc[1].exe:
-	Verified:	   Unsigned
-	File date:	   9:39 AM 11/29/2012
-	Publisher:	   n/a
-	Description:   n/a
-	Product:	   n/a
-	Version:	   n/a
-	File version:  n/a
-	Strong Name:   Unsigned
-	Original Name: n/a
-	Internal Name: n/a
-	Copyright:	   n/a
-	Comments:	   n/a
+	Verified:	Unsigned
+	File date:	9:39 AM 11/29/2012
+	Publisher:	n/a
+	Description:	n/a
+	Product:	n/a
+	Version:	n/a
+	File version:	n/a
+	Strong Name:	Unsigned
+	Original Name:	n/a
+	Internal Name:	n/a
+	Copyright:	n/a
+	Comments:	n/a
 
 [-] Verify-sigs:
 PE File, but no signature data present.
@@ -313,17 +236,7 @@ Misc. Info
 ==========================================================================================
 Adobe Malware Classifier: None
 Anomalies/Flags		    : Yes
-	[+] Header Checksum is zero
-	[+] No Version Info attribs
 Anti-VM			        : None
 Anti-Dbg		        : Yes
-	[+] 0x40c054 UnhandledExceptionFilter
-	[+] 0x40c05c IsDebuggerPresent
-	[+] 0x40c060 TerminateProcess
 Embedded File(s)	    : Yes
-	[+] File at 0 size=115712 (113.0 KB): Microsoft Windows Portable Executable: Intel 80386, Windows GUI
-	[+] File at 0 size=115712 (113.0 KB): Microsoft Windows Portable Executable: Intel 80386, Windows GUI
-	[+] File at 6233 size=7522816 (7.2 MB): MS-DOS executable
-	[+] File at 0 size=115712 (113.0 KB): Microsoft Windows Portable Executable: Intel 80386, Windows GUI
-	[+] File at 6233 size=7522816 (7.2 MB): MS-DOS executable
 URLs			        : None
