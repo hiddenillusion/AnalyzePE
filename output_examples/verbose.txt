@@ -1,0 +1,242 @@
+remnux@remnux:~/Desktop$ AnalyzePE.py mslE789.tmp 
+##########################################################################################
+[0] File: mslE789.tmp
+##########################################################################################
+
+Meta-data
+==========================================================================================
+Size		: 35272 bytes
+Type		: PE32 executable for MS Windows (GUI) Intel 80386 32-bit
+Architecture: 32 Bits binary
+MD5		    : 6d048d18ad17de28d02198c80ac49734
+SHA1		: 64c85c89137608bde0627fbed059a579cca54435
+ssdeep		: 768:73KC7ATKQJMq6vXRvAHhuBxhX/e63TUFkumoV8MV9+Gjt:DKuCoJvABcve6pcVsG
+Date		: 0x46B2E8A6 [Fri Aug  3 08:34:46 2007 UTC]
+Language	: ENGLISH
+CRC:	(Claimed) : 0xa40c, (Actual): 0xb1f4 [SUSPICIOUS]
+Packers		: PE Diminisher v0.1
+Entry Point	: 0x40218d .text 0/5
+================
+Offset | Instructions
+----------------------------------------
+0	push byte 0x0
+2	call 0x4029d0
+7	mov [0x404a4b],eax
+12	call 0x4029ca
+17	mov [0x4050ae],eax
+22	push byte 0x0
+24	push dword [0x4050ae]
+30	push byte 0x0
+32	push dword [0x404a4b]
+38	call 0x4024aa
+43	push eax
+44	call 0x4029c4
+49	dec esi
+50	?? jz 0x402239
+53	outsv 
+54	jc 0x402230
+56	and [ebx+0x65],dl
+59	arpl [ebp+0x72],si
+62	imul esi,[ecx+edi*2+0x20],0x6c6f6f54
+70	add [ecx],cl
+73	dec esp
+74	outsv 
+75	popa 
+76	fs dec esp
+78	imul esp,[edx+0x72],0x41797261
+85	add [edx],ah
+87	push eax
+88	outsv 
+89	jnc 0x40225c
+91	push ecx
+92	jnz 0x402254
+94	jz 0x40223a
+96	?? jnc 0x402263
+99	popa 
+
+Sections
+==========================================================================================
+Name       VirtAddr     VirtSize     RawSize    MD5                              Entropy
+------------------------------------------------------------------------------------------
+.text      0x1000       0x19e2       0x1a00     20a03486bd0f56f123e3ce634e079ddf 2.925594    
+.rdata     0x3000       0xba         0x200      f5ffbe4132561fccc72c88211fae0910 1.828740    
+.data      0x4000       0x11be       0x0        d41d8cd98f00b204e9800998ecf8427e 0.000000    [SUSPICIOUS]
+.rsrc      0x6000       0x63b8       0x6400     15543092931e4391091433a6ecb8f3ee 7.899964    [SUSPICIOUS]
+.reloc     0xd000       0xe0         0x200      7708b319885bcc22120bc05138568806 1.804640    
+
+Resource entries
+==========================================================================================
+Name               RVA      Size     Lang         Sublang                  Type
+------------------------------------------------------------------------------------------
+RT_BITMAP          0x6060   0x6358   LANG_ENGLISH SUBLANG_ENGLISH_US       data
+
+Imports
+==========================================================================================
+[1] kernel32.dll
+
+Suspicious IAT alerts
+==========================================================================================
+[1] GetCommandLineA
+[2] GetModuleHandleA
+[3] LoadLibraryA
+[4] VirtualAlloc
+
+Shellcode test:
+==========================================================================================
+***No shellcode detected via emulation
+
+Digital Signature Info.:
+==========================================================================================
+[-] Sigcheck:
+Z:\home\remnux\Desktop\mslE789.tmp:
+	Verified:	    Error -2146762487 (0x800b0109)
+	Signing date:	9:39 AM 11/29/2012
+	Publisher:	    n/a
+	Description:	n/a
+	Product:	    n/a
+	Version:	    n/a
+	File version:	n/a
+	Strong Name:	Unsigned
+	Original Name:	n/a
+	Internal Name:	n/a
+	Copyright:	    n/a
+	Comments:	    n/a
+
+[-] Verify-sigs:
+[!] ERROR: 'sha256'
+
+Misc. Info
+==========================================================================================
+Adobe Malware Classifier: None
+Anomalies/Flags		    : Yes
+Anti-VM			        : None
+Anti-Dbg		        : None
+Embedded File(s)	    : None
+URLs			        : None
+
+
+remnux@remnux:~/Desktop$ AnalyzePE.py calc\[1\].exe 
+##########################################################################################
+[1] File: calc[1].exe
+##########################################################################################
+
+Meta-data
+==========================================================================================
+Size		: 115712 bytes
+Type		: PE32 executable for MS Windows (GUI) Intel 80386 32-bit
+Architecture: 32 Bits binary
+MD5		    : f598545edeef5a690a473d7026ff55d2
+SHA1		: f70bf8dad5a885046a4306dcaad93b3500d89957
+ssdeep		: 1536:Fz1X2G1CC2vkaWnqwNnd0OMr2Pzk/BViVqwqHs9WJy2CcJN4FrsVlV3TlEjdXNss:Ftp92saIGOyZAq9y2Cc0z
+Date		: 0x50B75735 [Thu Nov 29 12:38:13 2012 UTC]
+Language	: ENGLISH
+CRC:	(Claimed) : 0x0, (Actual): 0x1fa85 [SUSPICIOUS]
+Packers		: Microsoft Visual C++ 8
+Entry Point	: 0x4017b0 .text 0/4
+================
+Offset | Instructions
+----------------------------------------
+0	call 0x404c05
+5	jmp 0x401643
+10	mov edi,edi
+12	push esi
+13	push edi
+14	xor esi,esi
+16	mov edi,0x410a60
+21	cmp dword [esi*8+0x40f934],0x1
+29	jnz 0x4017ec
+31	lea eax,[esi*8+0x40f930]
+38	mov [eax],edi
+40	push dword 0xfa0
+45	push dword [eax]
+47	add edi,0x18
+50	call [0x40c038]
+56	test eax,eax
+58	jz 0x4017f8
+60	inc esi
+61	cmp esi,0x24
+64	jl 0x4017c5
+66	xor eax,eax
+68	inc eax
+69	pop edi
+70	pop esi
+71	ret 
+72	and dword [esi*8+0x40f930],0x0
+80	xor eax,eax
+82	jmp 0x4017f5
+84	mov edi,edi
+86	push ebx
+87	mov ebx,[0x40c03c]
+93	push esi
+94	mov esi,0x40f930
+99	push edi
+
+Sections
+==========================================================================================
+Name       VirtAddr     VirtSize     RawSize    MD5                              Entropy
+------------------------------------------------------------------------------------------
+.text      0x1000       0xa7d3       0xa800     f81ee5cde192f4c22575c5fb39a297e1 6.649034    
+.rdata     0xc000       0x2386       0x2400     02a2dd0b5e3e937377bb0e37665c8811 4.826653    
+.data      0xf000       0x3800       0x1a00     b897bf4b5119db414be2ee5327cdd57e 5.455457    
+.rsrc      0x13000      0xd9f0       0xda00     14b5aea2e6c313ce2f7f3a4b321e748a 6.639424    
+
+Resource entries
+==========================================================================================
+Name               RVA      Size     Lang         Sublang                  Type
+------------------------------------------------------------------------------------------
+RT_FONT            0x13058  0xd995   LANG_ENGLISH SUBLANG_ENGLISH_US       data
+
+Imports
+==========================================================================================
+[1] COMDLG32.dll
+[2] KERNEL32.dll
+
+Suspicious IAT alerts
+==========================================================================================
+[1] CreateFileW
+[2] GetCommandLineA
+[3] GetModuleFileNameA
+[4] GetModuleFileNameW
+[5] GetModuleHandleW
+[6] GetProcAddress
+[7] GetStartupInfoW
+[8] GetTickCount
+[9] IsDebuggerPresent
+[10] LoadLibraryW
+[11] Sleep
+[12] TerminateProcess
+[13] UnhandledExceptionFilter
+[14] WriteFile
+
+Shellcode test:
+==========================================================================================
+***No shellcode detected via emulation
+
+Digital Signature Info.:
+==========================================================================================
+[-] Sigcheck:
+Z:\home\remnux\Desktop\calc[1].exe:
+	Verified:	Unsigned
+	File date:	9:39 AM 11/29/2012
+	Publisher:	n/a
+	Description:	n/a
+	Product:	n/a
+	Version:	n/a
+	File version:	n/a
+	Strong Name:	Unsigned
+	Original Name:	n/a
+	Internal Name:	n/a
+	Copyright:	n/a
+	Comments:	n/a
+
+[-] Verify-sigs:
+PE File, but no signature data present.
+
+Misc. Info
+==========================================================================================
+Adobe Malware Classifier: None
+Anomalies/Flags		    : Yes
+Anti-VM			        : None
+Anti-Dbg		        : Yes
+Embedded File(s)	    : Yes
+URLs			        : None
