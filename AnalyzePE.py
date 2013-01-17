@@ -105,6 +105,11 @@ def header(msg):
 def subTitle(msg):
     return "\n" + msg + "\n" + ("-" * 40)
 
+def q(s):
+        quote = "\""
+        s = quote + s + quote
+        return s
+
 def analyze(file):
     """
     filename, size, type, md5, sha1, ssdeep, timestamp, Entry Point, CRC, packers, flag on suspicious EP sections, yara, clamav, TLS callbacks, resource section, imports, suspicious IAT alerts, sections w/ virtual adddress, size, entropy, version info
@@ -168,8 +173,7 @@ def sigchecker(file):
     sigcheck - not as useful compared to when on M$ platforms of course, but can provide info.
     """
     opts = " -q -a "
-    cmd = wine + ' ' + sigcheck + opts + file
-    #cmd = 'wine ' + '/path/to/sigcheck.exe' + opts + file
+    cmd = wine + ' ' + sigcheck + opts + q(file)
     p = subprocess.Popen(cmd,stderr=subprocess.PIPE,stdout=subprocess.PIPE,shell=True)
     (stdout, stderr) = p.communicate()
     if stdout:
