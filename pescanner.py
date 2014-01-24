@@ -238,6 +238,10 @@ class PEScanner:
                             ret.append(imp.name)
         return ret
 
+    # this requires pefile v1.2.10-139 +
+    def get_imphash(self, pe):
+        return pe.get_imphash()
+
     def get_timestamp(self, pe):
         val = pe.FILE_HEADER.TimeDateStamp
         ts = '0x%-8X' % (val)
@@ -337,6 +341,7 @@ class PEScanner:
             out.append("MD5\t\t: %s"  % hashlib.md5(data).hexdigest())
             out.append("SHA1\t\t: %s" % hashlib.sha1(data).hexdigest())
             out.append("ssdeep\t\t: %s" % get_ssdeep(file))
+            out.append("imphash\t\t: %s" % self.get_imphash(pe))
             out.append("Date\t\t: %s" % self.get_timestamp(pe))
             out.append("Language\t: %s" % self.get_lang(pe))
 
